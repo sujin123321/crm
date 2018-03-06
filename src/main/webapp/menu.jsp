@@ -1,21 +1,22 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <HTML>
 <HEAD>
-<TITLE>�ͻ���ϵ����ϵͳ</TITLE>
+<TITLE>客户关系管理系统</TITLE>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 
-<!--�����С���ɫ���Ըı䣬���಻Ҫ�ı�-->
+<!--字体大小和�色可以改变，其余不要改变-->
 <STYLE ID="JoustStyles" TYPE="text/css">
 <!--
 .menuItem {position:absolute; visibility:hidden; left:0px;}
 .node { color: #FFF;
-font-family : "����";
+font-family : "宋体";
 font-size : 13px;}
 .node A:link { color: #FFF; text-decoration: none; }
 .node A:visited { color: #FFF; text-decoration: none; }
 .node A:active { color: #005BB7; text-decoration: none; }
 .node A:hover { color: #FFF; text-decoration: none; }
 .leaf { color: #FFF;
-font-family : "����";
+font-family : "宋体";
 font-size : 13px;}
 .leaf A:link { color: #FFF; text-decoration: none;}
 .leaf A:visited { color: #FFF; text-decoration: none; }
@@ -76,7 +77,7 @@ if (document.all) {
 document.styleSheets["JoustStyles"].addRule ("#statusMsgDiv", "top:" + menuStart);
 }
 }
-document.writeln('<DIV ID="statusMsgDiv"><CENTER>���Ե�...</CENTER></DIV>');
+document.writeln('<DIV ID="statusMsgDiv"><CENTER>请稍等...</CENTER></DIV>');
 }
 function drawLimitMarker() {
 var b = theBrowser;
@@ -122,7 +123,7 @@ function frameResized() {if (theBrowser.hasDHTML) {theMenu.refreshDHTML();}}
 
 // ############   End ############
 
-/*�����ļ�������Ҫ�ı䣬�������п��ܻس������⣬��Ϊ�໥���õĵط��ǳ��ࡣ*/
+/*所有文件名都不要改变，否则运行可能回出现问题，因为相互引用的地方非常多。*/
 
 if (self.name != 'menu') { self.location.href = 'index2.html'; }
 //-->
@@ -137,8 +138,8 @@ setTop();
 //-->
 </SCRIPT>
 
-<!--��Щ���壬�ɫ�ȲΔ�Ӧ���ں���Ĳˆ� -->
-<FONT FACE="����" color="#FFF">
+<!--这些字体，�色等参�涤τ糜诤竺娴牟�� -->
+<FONT FACE="宋体" color="#FFF">
 
 <SCRIPT LANGUAGE="JavaScript">
 <!--

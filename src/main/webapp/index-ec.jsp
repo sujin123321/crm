@@ -1,6 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <HTML>
 <HEAD>
-<TITLE>¿Í»§¹ØÏµ¹ÜÀíÏµÍ³</TITLE>
+<TITLE>å®¢æˆ·å…³ç³»ç®¡ç†ç³»ç»Ÿ</TITLE>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 
 <script language="JavaScript">
@@ -57,7 +58,7 @@ function imgStoreGetTag(theName, iconID, altText) {
 	return tag;
 }
 // The MenuItem object.  This contains the data and functions for drawing each item.
-//ÕâĞ©²ÎÊı²»ÒªËæ±ã¸Ä¶¯£»
+//è¿™äº›å‚æ•°ä¸è¦éšä¾¿æ”¹åŠ¨ï¼›
 function MenuItem (owner, id, type, text, url, status, nItem, pItem, parent) {
 	this.owner = owner;
 	this.id = id;
@@ -166,7 +167,7 @@ function MIMouseOver(imgName, theURL) {
 	var s = '';
 	if (imgName == 'plusMinusIcon') {
 		newImg = this.PMIconName();
-		s = 'µã»÷' + ((this.isopen == true) ? 'êPé].' : '´ò¿ª.');
+		s = 'ç‚¹å‡»' + ((this.isopen == true) ? 'ï¿½Pï¿½].' : 'æ‰“å¼€.');
 	} else {
 		if (imgName == 'docIcon') {
 			newImg = this.docIconName();
@@ -782,8 +783,8 @@ function defOnError(msg, url, lno) {
 // Declare global variables
 var theBrowser = new browserInfo;
 
-var jsErrorMsg = 'í“Ãæ·¢Éú½Å±¾´íÎó';
-jsErrorMsg += 'ÕˆÍ¨Öª¹ÜÀí†T.';
+var jsErrorMsg = 'ï¿½é¢å‘ç”Ÿè„šæœ¬é”™è¯¯';
+jsErrorMsg += 'ï¿½é€šçŸ¥ç®¡ç†ï¿½T.';
 if (theBrowser.canOnError) {self.onerror = defOnError;}
 
 var theMenu = new Menu;
@@ -889,37 +890,37 @@ function initialise() {
 	var level3ID = -1;
 	var level4ID = -1;
 	var level5ID = -1;
-	//level±íÊ¾×î¸ß¼¶£¬level2×Ó¼¶£¬level3×Ó×Ó¼¶£¬DocumentÎÄ¼ş£¬folderÎÄ¼ş¼Ğ¡£
+	//levelè¡¨ç¤ºæœ€é«˜çº§ï¼Œlevel2å­çº§ï¼Œlevel3å­å­çº§ï¼ŒDocumentæ–‡ä»¶ï¼Œfolderæ–‡ä»¶å¤¹ã€‚
 	//Set the initial state of the folder to "open"
-	l2ID = theMenu.addEntry(-1, "Folder", "¿Í»§¹ØÏµ¹ÜÀíÏµÍ³", "mywork.htm", "¿Í»§¹ØÏµ¹ÜÀíÏµÍ³");
+	l2ID = theMenu.addEntry(-1, "Folder", "å®¢æˆ·å…³ç³»ç®¡ç†ç³»ç»Ÿ", "mywork.jsp", "å®¢æˆ·å…³ç³»ç®¡ç†ç³»ç»Ÿ");
 	
-	L01 = theMenu.addChild(l2ID, "Folder", "ÓªÏú¹ÜÀí", "", "ÓªÏú¹ÜÀí...");
-	L0101 = theMenu.addChild(L01, "Document", "ÏúÊÛ»ú»á¹ÜÀí", "~sale/list.html", "ÏúÊÛ»ú»á¹ÜÀí...");
-	L0102 = theMenu.addChild(L01, "Document", "¿Í»§¿ª·¢¼Æ»®", "~sale/dev.html", "¿Í»§¿ª·¢¼Æ»®...");
+	L01 = theMenu.addChild(l2ID, "Folder", "è¥é”€ç®¡ç†", "", "è¥é”€ç®¡ç†...");
+	L0101 = theMenu.addChild(L01, "Document", "é”€å”®æœºä¼šç®¡ç†", "~sale/list.html", "é”€å”®æœºä¼šç®¡ç†...");
+	L0102 = theMenu.addChild(L01, "Document", "å®¢æˆ·å¼€å‘è®¡åˆ’", "~sale/dev.html", "å®¢æˆ·å¼€å‘è®¡åˆ’...");
 
 	
-	L02 = theMenu.addChild(l2ID, "Folder", "¿Í»§¹ÜÀí", "", "¿Í»§¹ÜÀí...");
-	L0201 = theMenu.addChild(L02, "Document", "¿Í»§ĞÅÏ¢¹ÜÀí", "~cust/cust/list.html", "¿Í»§ĞÅÏ¢¹ÜÀí...");
-	L0201 = theMenu.addChild(L02, "Document", "¿Í»§Á÷Ê§¹ÜÀí", "~cust/lost/list.html", "¿Í»§Á÷Ê§¹ÜÀí...");	
+	L02 = theMenu.addChild(l2ID, "Folder", "å®¢æˆ·ç®¡ç†", "", "å®¢æˆ·ç®¡ç†...");
+	L0201 = theMenu.addChild(L02, "Document", "å®¢æˆ·ä¿¡æ¯ç®¡ç†", "~cust/cust/list.html", "å®¢æˆ·ä¿¡æ¯ç®¡ç†...");
+	L0201 = theMenu.addChild(L02, "Document", "å®¢æˆ·æµå¤±ç®¡ç†", "~cust/lost/list.html", "å®¢æˆ·æµå¤±ç®¡ç†...");	
 
-	L03 = theMenu.addChild(l2ID, "Folder", "·şÎñ¹ÜÀí", "", "¿Í»§·şÎñ¹ÜÀí...");
-	L0301 = theMenu.addChild(L03, "Document", "·şÎñ´´½¨", "~cust/service/add.html", "·şÎñ´´½¨...");
-	L0302 = theMenu.addChild(L03, "Document", "·şÎñ·ÖÅä", "~cust/service/dispatch.html", "·şÎñ·ÖÅä...");
-	L0303 = theMenu.addChild(L03, "Document", "·şÎñ´¦Àí", "~cust/service/deal.html", "·şÎñ´¦Àí...");
-	L0304 = theMenu.addChild(L03, "Document", "·şÎñ·´À¡", "~cust/service/feedback.html", "·şÎñ·´À¡...");
-	L0305 = theMenu.addChild(L03, "Document", "·şÎñ¹éµµ", "~cust/service/arch.html", "·şÎñ¹éµµ...");
+	L03 = theMenu.addChild(l2ID, "Folder", "æœåŠ¡ç®¡ç†", "", "å®¢æˆ·æœåŠ¡ç®¡ç†...");
+	L0301 = theMenu.addChild(L03, "Document", "æœåŠ¡åˆ›å»º", "~cust/service/add.html", "æœåŠ¡åˆ›å»º...");
+	L0302 = theMenu.addChild(L03, "Document", "æœåŠ¡åˆ†é…", "~cust/service/dispatch.html", "æœåŠ¡åˆ†é…...");
+	L0303 = theMenu.addChild(L03, "Document", "æœåŠ¡å¤„ç†", "~cust/service/deal.html", "æœåŠ¡å¤„ç†...");
+	L0304 = theMenu.addChild(L03, "Document", "æœåŠ¡åé¦ˆ", "~cust/service/feedback.html", "æœåŠ¡åé¦ˆ...");
+	L0305 = theMenu.addChild(L03, "Document", "æœåŠ¡å½’æ¡£", "~cust/service/arch.html", "æœåŠ¡å½’æ¡£...");
 	
 	
-	L04 = theMenu.addChild(l2ID, "Folder", "Í³¼Æ±¨±í", "", "Í³¼Æ±¨±í...");
-	L0401 = theMenu.addChild(L04, "Document", "¿Í»§¹±Ï×·ÖÎö", "~rept/contr.html", "¿Í»§¹±Ï×·ÖÎö...");
-	L0402 = theMenu.addChild(L04, "Document", "¿Í»§¹¹³É·ÖÎö", "~rept/cons.html", "¿Í»§¹¹³É·ÖÎö...");
-	L0403 = theMenu.addChild(L04, "Document", "¿Í»§·şÎñ·ÖÎö", "~rept/ser.html", "¿Í»§·şÎñ·ÖÎö...");
-	L0404 = theMenu.addChild(L04, "Document", "¿Í»§Á÷Ê§·ÖÎö", "~rept/lost.html", "¿Í»§Á÷Ê§·ÖÎö...");
+	L04 = theMenu.addChild(l2ID, "Folder", "ç»Ÿè®¡æŠ¥è¡¨", "", "ç»Ÿè®¡æŠ¥è¡¨...");
+	L0401 = theMenu.addChild(L04, "Document", "å®¢æˆ·è´¡çŒ®åˆ†æ", "~rept/contr.html", "å®¢æˆ·è´¡çŒ®åˆ†æ...");
+	L0402 = theMenu.addChild(L04, "Document", "å®¢æˆ·æ„æˆåˆ†æ", "~rept/cons.html", "å®¢æˆ·æ„æˆåˆ†æ...");
+	L0403 = theMenu.addChild(L04, "Document", "å®¢æˆ·æœåŠ¡åˆ†æ", "~rept/ser.html", "å®¢æˆ·æœåŠ¡åˆ†æ...");
+	L0404 = theMenu.addChild(L04, "Document", "å®¢æˆ·æµå¤±åˆ†æ", "~rept/lost.html", "å®¢æˆ·æµå¤±åˆ†æ...");
 	
-	L05 = theMenu.addChild(l2ID, "Folder", "»ù´¡Êı¾İ", "", "»ù´¡Êı¾İ...");
-	L0501 = theMenu.addChild(L05, "Document", "Êı¾İ×Öµä¹ÜÀí", "~basd/dict.html", "Êı¾İ×Öµä¹ÜÀí...");
-	L0502 = theMenu.addChild(L05, "Document", "²éÑ¯²úÆ·ĞÅÏ¢", "~basd/product.html", "²éÑ¯²úÆ·ĞÅÏ¢...");
-	L0503 = theMenu.addChild(L05, "Document", "²éÑ¯¿â´æ", "~basd/storage.html", "²éÑ¯¿â´æ...");
+	L05 = theMenu.addChild(l2ID, "Folder", "åŸºç¡€æ•°æ®", "", "åŸºç¡€æ•°æ®...");
+	L0501 = theMenu.addChild(L05, "Document", "æ•°æ®å­—å…¸ç®¡ç†", "~basd/dict.html", "æ•°æ®å­—å…¸ç®¡ç†...");
+	L0502 = theMenu.addChild(L05, "Document", "æŸ¥è¯¢äº§å“ä¿¡æ¯", "~basd/product.html", "æŸ¥è¯¢äº§å“ä¿¡æ¯...");
+	L0503 = theMenu.addChild(L05, "Document", "æŸ¥è¯¢åº“å­˜", "~basd/storage.html", "æŸ¥è¯¢åº“å­˜...");
         
 	theMenu.entry[l2ID].isopen = true;
 }
@@ -939,17 +940,17 @@ if (self.name == 'menu') {
 	initialise();
 	var thePage = pageFromSearch('Welcome.html', theMenu, true);
 	
-//ÏÂÃæÓÃjs½Å±¾Ğ´FRAMESET½á¹¹£»
+//ä¸‹é¢ç”¨jsè„šæœ¬å†™FRAMESETç»“æ„ï¼›
 
 if (theBrowser.IE){
 	self.document.writeln('<frameset rows="*" cols="160,*" border="0"  noresize framespacing="2">'); 
-	self.document.writeln('<frame name="menu" src="menu.html"  border="0" scrolling="auto" marginwidth="0"  leftmargin="0" marginheight="0" APPLICATION="yes">');
-	self.document.writeln('<frame name="text" src="mywork.htm"  frameborder="no"  marginwidth="0" marginheight="0" APPLICATION="yes">');
+	self.document.writeln('<frame name="menu" src="menu.jsp"  border="0" scrolling="auto" marginwidth="0"  leftmargin="0" marginheight="0" APPLICATION="yes">');
+	self.document.writeln('<frame name="text" src="mywork.jsp"  frameborder="no"  marginwidth="0" marginheight="0" APPLICATION="yes">');
 	self.document.writeln('</frameset>');
 }else{
 	self.document.writeln('<frameset rows="*" cols="160,*" border="0"  noresize framespacing="2">'); 
 		self.document.writeln('<frame name="left" frameborder="no"  scrolling="no"  noresize marginwidth="0"  marginheight="0" >');
-		self.document.writeln('<frame name="menu" src="menu.html"  border="0" scrolling="auto" marginwidth="0"  leftmargin="0" marginheight="0" APPLICATION="yes">');
+		self.document.writeln('<frame name="menu" src="menu.jsp"  border="0" scrolling="auto" marginwidth="0"  leftmargin="0" marginheight="0" APPLICATION="yes">');
 	self.document.writeln('<frame name="text" src="desk.htm"  frameborder="no"  marginwidth="0" marginheight="0" APPLICATION="yes">');
 	self.document.writeln('</frameset>');
 }
