@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <HTML>
 <HEAD>
-<TITLE>客户关系管理系统</TITLE>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-
+    <%@include file="/common/head.jsp" %>
+    <TITLE>客户关系管理系统</TITLE>
 <script language="JavaScript">
 <!--
 function getDHTMLObj(docName, objName) {return eval(docName + theBrowser.DHTMLRange + '.' + objName + theBrowser.DHTMLStyleObj);}
@@ -895,13 +894,13 @@ function initialise() {
 	l2ID = theMenu.addEntry(-1, "Folder", "客户关系管理系统", "mywork.jsp", "客户关系管理系统");
 	
 	L01 = theMenu.addChild(l2ID, "Folder", "营销管理", "", "营销管理...");
-	L0101 = theMenu.addChild(L01, "Document", "销售机会管理", "~sale/list.html", "销售机会管理...");
+	L0101 = theMenu.addChild(L01, "Document", "销售机会管理", "input/sale/list", "销售机会管理...");
 	L0102 = theMenu.addChild(L01, "Document", "客户开发计划", "~sale/dev.html", "客户开发计划...");
 
 	
 	L02 = theMenu.addChild(l2ID, "Folder", "客户管理", "", "客户管理...");
-	L0201 = theMenu.addChild(L02, "Document", "客户信息管理", "~cust/cust/list.html", "客户信息管理...");
-	L0201 = theMenu.addChild(L02, "Document", "客户流失管理", "~cust/lost/list.html", "客户流失管理...");	
+	L0201 = theMenu.addChild(L02, "Document", "客户信息管理", "~cust/cust/list.jsp", "客户信息管理...");
+	L0201 = theMenu.addChild(L02, "Document", "客户流失管理", "~cust/lost/list.jsp", "客户流失管理...");
 
 	L03 = theMenu.addChild(l2ID, "Folder", "服务管理", "", "客户服务管理...");
 	L0301 = theMenu.addChild(L03, "Document", "服务创建", "~cust/service/add.html", "服务创建...");
@@ -918,7 +917,7 @@ function initialise() {
 	L0404 = theMenu.addChild(L04, "Document", "客户流失分析", "~rept/lost.html", "客户流失分析...");
 	
 	L05 = theMenu.addChild(l2ID, "Folder", "基础数据", "", "基础数据...");
-	L0501 = theMenu.addChild(L05, "Document", "数据字典管理", "~basd/dict.html", "数据字典管理...");
+	L0501 = theMenu.addChild(L05, "Document", "数据字典管理", "~basd/dict.jsp", "数据字典管理...");
 	L0502 = theMenu.addChild(L05, "Document", "查询产品信息", "~basd/product.html", "查询产品信息...");
 	L0503 = theMenu.addChild(L05, "Document", "查询库存", "~basd/storage.html", "查询库存...");
         
@@ -948,13 +947,17 @@ if (theBrowser.IE){
 	self.document.writeln('<frame name="text" src="mywork.jsp"  frameborder="no"  marginwidth="0" marginheight="0" APPLICATION="yes">');
 	self.document.writeln('</frameset>');
 }else{
-	self.document.writeln('<frameset rows="*" cols="160,*" border="0"  noresize framespacing="2">'); 
-		self.document.writeln('<frame name="left" frameborder="no"  scrolling="no"  noresize marginwidth="0"  marginheight="0" >');
-		self.document.writeln('<frame name="menu" src="menu.jsp"  border="0" scrolling="auto" marginwidth="0"  leftmargin="0" marginheight="0" APPLICATION="yes">');
-	self.document.writeln('<frame name="text" src="desk.htm"  frameborder="no"  marginwidth="0" marginheight="0" APPLICATION="yes">');
-	self.document.writeln('</frameset>');
-}
+//	self.document.writeln('<frameset rows="*" cols="160,*" border="0"  noresize framespacing="2">');
+//		self.document.writeln('<frame name="left" frameborder="no"  scrolling="no"  noresize marginwidth="0"  marginheight="0" >');
+//		self.document.writeln('<frame name="menu" src="menu.jsp"  border="0" scrolling="auto" marginwidth="0"  leftmargin="0" marginheight="0" APPLICATION="yes">');
+//	self.document.writeln('<frame name="text" src="desk.htm"  frameborder="no"  marginwidth="0" marginheight="0" APPLICATION="yes">');
+//	self.document.writeln('</frameset>');
 
+    self.document.writeln('<frameset rows="*" cols="160,*" border="0"  noresize framespacing="2">');
+    self.document.writeln('<frame name="menu" src="menu.jsp"  border="0" scrolling="auto" marginwidth="0"  leftmargin="0" marginheight="0" APPLICATION="yes">');
+    self.document.writeln('<frame name="text" src="mywork.jsp"  frameborder="no"  marginwidth="0" marginheight="0" APPLICATION="yes">');
+    self.document.writeln('</frameset>');
+    }
 }
 
 //-->
