@@ -1,28 +1,30 @@
 $(function() {
 	$("ul.myTree").each(function() {
 		var url = "tree/get?parentNodeId=" + $(this).attr("id");
+		alert(1);
 		$(this).tree( {
 			url : url,
 			onBeforeLoad : function(node, param) {
 				console.log("onBeforeLoad");
 				if (node) {//有节点的时候才将parentNodeId改为这一子节点所对应的节点
+					alert(3);
 				var defaults = $(this).tree("options");
 				var newUrl = "tree/get?parentNodeId=" + node.id;
 				defaults.url = newUrl;//将新地址赋值到跳转的地址
 		}
 	},
 	onSelect : function(node) {
+				alert(4);
 		var text = node.text;
 		var url = node.attributes.url;
-
-		//alert(text+","+url);
+		alert(text+","+url);
 			if (url) {
 				doOpenTab(text, url);
 			}
 		}
 		});
 	});
-	//alert(399);
+	alert(399);
 });
 
 /**
