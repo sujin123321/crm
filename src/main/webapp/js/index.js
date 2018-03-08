@@ -1,18 +1,28 @@
 $(function() {
 	$("ul.myTree").each(function() {
-		var url = "tree/get?parentNodeId=" + $(this).attr("id");
-		alert(1);
-		$(this).tree( {
+		var url = "tree/get?parentNodeId=" + $(this).attr("id")+"&method=1";
+		alert(url);
+		$("ul.myTree").tree( {
 			url : url,
 			onBeforeLoad : function(node, param) {
-				console.log("onBeforeLoad");
-				if (node) {//有节点的时候才将parentNodeId改为这一子节点所对应的节点
-					alert(3);
-				var defaults = $(this).tree("options");
-				var newUrl = "tree/get?parentNodeId=" + node.id;
-				defaults.url = newUrl;//将新地址赋值到跳转的地址
-		}
-	},
+				//console.log("onBeforeLoad");
+                alert(3);
+                if (node){
+                	alert(4);
+                    //有节点的时候才将parentNodeId改为这一子节点所对应的节点
+                    var defaults = $(this).tree("options");
+                    var newUrl = "tree/get?parentNodeId=" + node.id;
+                    defaults.url = newUrl;//将新地址赋值到跳转的地址
+                }else{
+                	alert(5);
+                    var defaults = $(this).tree("options");
+                    alert("w")
+                    var newUrl = "tree/get?parentNodeId=" + node.id;
+                    alert(newUrl);
+                    defaults.url = newUrl;//将新地址赋值到跳转的地址
+				}
+
+		},
 	onSelect : function(node) {
 				alert(4);
 		var text = node.text;
@@ -24,19 +34,20 @@ $(function() {
 		}
 		});
 	});
-	alert(399);
+	//alert(399);
 });
 
 /**
  * 打开新的tab页
  */
 function doOpenTab(text, url) {
+	alert(1);
 	//判断选中的枝节点 如果已存在就选中这个tab页
-	if ($('#tt').tabs('exists', text)) {
-		$('#tt').tabs('select', text);
-		//修改不同对象但用同个tab的隐藏域（iframe） 
+	if ($('#wu-tabs').tabs('exists', text)) {
+		$('#wu-tabs').tabs('select', text);
+		//修改不同对象但用同个tab的隐藏域（iframe）
 		//getTab:获取指定选项卡面板
-		var tabObj = $('#tt').tabs('getTab',text);
+		var tabObj = $('#wu-tabs').tabs('getTab',text);
 		$("iframe",tabObj).attr("src",contextPath + url);
 	} else {
 		url = contextPath + url;
