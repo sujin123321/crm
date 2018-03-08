@@ -27,9 +27,8 @@ public class SysTreeNodeController {
     private ISysTreeNodeBiz sysTreeNodeBiz;
 
     @RequestMapping("/get")
-    public void reg(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-
-        System.out.println("getgetgetgetget");
+    public void get(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
+        //System.out.println("getgetgetgetget");
         String method = request.getParameter("method");
         // 判断是哪种方法
         if ("list".equals(method)) {
@@ -60,7 +59,7 @@ public class SysTreeNodeController {
         treeNode.setParentNodeId(-1);// 如果ParentNodeId = null 或者为-1 就查询一级节点
         List<SysTreeNode> SysTreeNodeList = sysTreeNodeBiz.listSysTreeNode(treeNode);
         for(SysTreeNode s:SysTreeNodeList)  {
-            System.out.println("mylist"+s);
+            System.out.println("mylist== "+s);
         }
         request.setAttribute("treeNodeList", SysTreeNodeList);
         return  "forward:/input/hello";
@@ -71,8 +70,10 @@ public class SysTreeNodeController {
 
 
     // 查询指定父节点下的子节点
-    @ResponseBody
-    public List<Map<String, Object>> listByParentNodeId(HttpServletRequest request,
+   // @ResponseBody
+    //List<Map<String, Object>>
+    @RequestMapping("/list")
+    public void  listByParentNodeId(HttpServletRequest request,
                                    HttpServletResponse response) throws ServletException, IOException {
         // 接收父节点id
         String parentNodeId = request.getParameter("parentNodeId");
@@ -102,9 +103,9 @@ public class SysTreeNodeController {
             treeNodeList.add(m);
         }
 
-//        response.setContentType("text/plain;charset=utf-8");
-//        OutputStream os = response.getOutputStream();
-//        JsonUtils.writeValue(os, treeNodeList);
-        return  treeNodeList;
+        response.setContentType("text/plain;charset=utf-8");
+        OutputStream os = response.getOutputStream();
+        JsonUtils.writeValue(os, treeNodeList);
+       // return  treeNodeList;
     }
 }
