@@ -3,81 +3,104 @@
 <html>
 <head>
 	<%@include file="/common/head.jsp"%>
-	<title>jb-aptech毕业设计项目</title>
-	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<link href="css/insdep/easyui.css" rel="stylesheet" type="text/css">
-	<link href="css/insdep/easyui_animation.css" rel="stylesheet" type="text/css">
-	<script src="script/common.js"></script>
-	<script type="text/javascript">
-
-	</script>
+    <title>jb-aptech毕业设计项目</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/insdep/easyui.css" rel="stylesheet" type="text/css">
+    <link href="css/insdep/easyui_animation.css" rel="stylesheet" type="text/css">
+    <script src="script/common.js"></script>
+    <%@include file="/common/easyui_style.jsp"%>
 </head>
 <body>
-<div class="page_title">销售机会管理&nbsp; &gt; 新建销售机会</div>
-<div class="button_bar">
-	<button class="common_button" onclick="help('');">帮助</button>
-	<button class="common_button" onclick="back();">返回</button>
-	<button class="common_button" onclick="add('list.html');">保存</button>  
-</div>
-<<%--table class="query_form_table">
-	<tr>
-		<th>编号</th>
-		<td><input readonly /></td>
-		<th>机会来源</th>
-		<td>
-			<input name="T4" size="20" /></td>
-	</tr>
-	<tr>
-		<th>客户名称</th>
-		<td><input /><span class="red_star">*</span></td>
-		<th>成功机率</th>
-		<td><input /><span class="red_star">*</span></td>
-	</tr>	
-	<tr>
-		<th>概要</th>
-		<td colspan="3"><input name="T0" size="52" /><span class="red_star">*</span></td>
-	</tr>
-	<tr>
-		<th>联系人</th>
-		<td><input name="T21" size="20" /></td>
-		<th>联系人电话</th>
-		<td><input name="T5" size="20" /></td>
-	</tr>
-	<tr>
-		<th>机会描述</th>
-		<td colspan="3"><textarea rows="6" cols="50" name="S1"></textarea><span class="red_star">*</span></td>
-	</tr>
-	<tr>
-		<th>创建人</th>
-		<td><input name="T19" value="刘颖" readonly size="20" /><span class="red_star">*</span></td>
-		<th>创建时间</th>
-		<td><input id="t1" name="T15" readonly size="20" /><span class="red_star">*</span></td>
-	</tr>
-</table>
-<br />
-<table disabled class="query_form_table" id="table1">
-	<tr>
-		<th>指派给</th>
-		<td>
-			<select name="D1">
-				<option>请选择...</option>
-				<option>小明</option>
-				<option>旺财</option>
-				<option>球球</option>
-				<option>孙小美</option>
-				<option>周洁轮</option>
-			</select> <span class="red_star">*</span></td>
-		<th>指派时间</th>
-		<td>
-			<input id="t2" name="T20" readonly size="20" /><span class="red_star">*</span></td>
-	</tr>
-</table>--%>
-<div class="easyui-panel" title="New Topic" style="width:100%;max-width:400px;padding:30px 60px;">
-	<input class="easyui-textbox" data-options="iconCls:'icon-search'" style="width:300px">
+
+<div class="easyui-panel" title="销售机会管理&nbsp; &gt; 新建销售机会" style="width:1000px;height: 500px;">
+	<form id="ff" method="post">
+		<br><br>
+		<div style="margin-bottom:20px;">
+			<input class="easyui-textbox" id="chcCustName" name="name" type="text"  style="width:30%;float: left;" data-options="label:'客户名称:'">
+			<input class="easyui-textbox" id="chcSource" name="name" type="text" style="width:30%;float: right;padding-left: -100px;" data-options="label:'机会来源:'">
+		</div>
+		<div style="margin-bottom:20px">
+			<input class="easyui-textbox" id="chcRate" name="name" type="text" style="width:30%" data-options="label:'成功机率:'">
+			<input class="easyui-textbox" id="chcLinkman" name="name" type="text" style="width:30%" data-options="label:'联系人:'">
+		</div>
+		<div style="margin-bottom:20px">
+			<input class="easyui-textbox" id="chcTitle" name="email" value="" style="width:30%" data-options="label:'概要:'">
+			<input class="easyui-textbox" id="chcTel" name="email" value="" style="width:30%" data-options="label:'联系人电话:'">
+
+		</div>
+		<div style="margin-bottom:20px">
+			<input class="easyui-textbox" id="chcDesc" name="message" value="" style="width:50%;height:80px" data-options="label:'机会描述:'">
+		</div>
+		<div style="margin-bottom:20px">
+			<input class="easyui-textbox" name="name" style="width:30%" data-options="label:'创建人:'">
+			<input class="easyui-textbox" name="name" style="width:30%" data-options="label:'创建时间:'">
+		</div>
+		<div style="margin-bottom:20px">
+			<select class="easyui-combobox" name="language" label="指派给" style="width:30%">
+				<option value="ar">Arabic</option>
+				<option value="bg">Bulgarian</option>
+			</select>
+			<input class="easyui-datetimespinner" label="指派时间:" labelPosition="left" value="6/24/2015" style="width:30%;" readonly>
+
+		</div>
+
+		<div style="text-align:center;padding:5px 0">
+			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">Submit</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">Clear</a>
+		</div>
+
+	</form>
+
 </div>
 <script>
-	setCurTime('t1');
-	setCurTime('t2');
+    //访问的地址
+//    var url=
+    //获取参数
+//    var chcCustName =$("#chcCustName").val();
+//    var chcTitle = $("#chcTitle").val();
+//    var chcLinkman = $("#chcLinkman").val();
+//    if(chcCustName!=null&&chcCustName.length!=0){
+//        if(chcTitle!=null&&chcTitle.length!=0){
+//            if(chcCustName!=null&&chcCustName.length!=0){
+//                    url='sale/add?chcCustName='+chcCustName+"&chcTitle="+chcTitle;
+//            }
+//        }
+//    }
+//    if(chcCustName==null)
+
+//	//参数
+//    var formData = {
+//
+//        };
+    function submitForm(){
+        // 显示进度条
+        $.messager.progress();
+        $('#ff').form('submit', {
+            url:'sale/add',
+            queryParams:{
+                chcCustName : $("#chcCustName").val(),
+                chcTitle : $("#chcTitle").val(),
+                chcLinkman : $("#chcLinkman").val()
+            },
+            onSubmit: function(){
+        var isValid = $(this).form('validate');
+        if (!isValid){
+            $.messager.progress('close');	// 如果表单是无效的则隐藏进度条
+        }
+        return isValid;	// 返回false终止表单提交
+          },
+            success: function(){
+                $.messager.progress('close');	// 如果提交成功则隐藏进度条
+                //关闭当前窗口
+                parent.removePanel();
+            }
+        });
+    }
+
+    function clearForm(){
+        $('#ff').form('clear');
+    }
 </script>
+
 </body>
 </html>
