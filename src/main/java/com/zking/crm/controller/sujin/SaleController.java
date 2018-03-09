@@ -7,6 +7,8 @@ import com.zking.crm.util.PageBean;
 import com.zking.crm.util.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,6 +27,16 @@ public class SaleController {
     private ISalChanceBiz salChanceBiz;
     private SalChance salChance = new SalChance();
     private PageBean pageBean;
+
+    //初始化
+    @ModelAttribute
+    public void init(Model model, SalChance salChance){//初始化
+        System.out.println("init");
+        salChance = new SalChance();
+        pageBean= new PageBean();
+
+        model.addAttribute("salChance",salChance);
+    }
 
     @RequestMapping("/listSalChance")
 //    @ResponseBody
@@ -99,6 +111,23 @@ public class SaleController {
         response.setContentType("text/plain;charset=utf-8");
         OutputStream os = response.getOutputStream();
         JsonUtils.writeValue(os, responseData);
+    }
+
+    //增加
+    @RequestMapping("/add")
+    public void add(HttpServletRequest request, SalChance salChance){
+        String chcCustName = request.getParameter("chcCustName");
+        String chcTitle = request.getParameter("chcTitle");
+        String chcLinkman = request.getParameter("chcLinkman");
+        if(null==chcCustName){
+        }else{
+            System.out.println(chcCustName);
+            System.out.println(chcTitle);
+            System.out.println(chcLinkman);
+            System.out.println(salChance);
+        }
+        //调用增加的方法
+
     }
 
 
