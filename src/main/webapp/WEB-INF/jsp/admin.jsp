@@ -234,6 +234,12 @@
         }
     }
 
+    //刷新
+    function refresh() {
+        var tab = $('#wu-tabs').tabs('getTab','销售机会管理');
+        // 获取选择的面板
+        tab.panel('refresh');
+    }
 </script>
 </body>
 </html>

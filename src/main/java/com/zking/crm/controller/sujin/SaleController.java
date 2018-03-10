@@ -26,6 +26,7 @@ public class SaleController {
     @Autowired
     private ISalChanceBiz salChanceBiz;
     private SalChance salChance = new SalChance();
+//    private SalChance salChance;
     private PageBean pageBean;
 
     //初始化
@@ -95,7 +96,8 @@ public class SaleController {
 
     //根据id查询单个
     @RequestMapping("/loadSalChance")
-    public void loadSalChance(HttpServletRequest request,HttpServletResponse response)
+    @ResponseBody
+    public SalChance loadSalChance(HttpServletRequest request,HttpServletResponse response)
             throws ServletException, IOException {
         //参数
         String chcId = request.getParameter("chcId");
@@ -105,30 +107,58 @@ public class SaleController {
         salChance.setChcId(chcId);
         //对象
         SalChance s = salChanceBiz.loadSalChance(salChance);
-        //转换成easyui所支持的格式
+//        //转换成easyui所支持的格式
+//        ResponseData responseData = new ResponseData();
+//        responseData.setRows(s);
+//        response.setContentType("text/plain;charset=utf-8");
+//        OutputStream os = response.getOutputStream();
+//        JsonUtils.writeValue(os, responseData);
+//        return  "/input/";
+        return  s;
+    }
+
+    //增加
+    @RequestMapping("/add")
+    public void add(HttpServletRequest request, SalChance salChance,HttpServletResponse response)
+            throws ServletException, IOException {
+        System.out.println(salChance);
+
+        salChance.setChcCreateId(1L);
+        salChance.setChcCreateBy("sj");
+        salChanceBiz.addSalChance(salChance);
+
         ResponseData responseData = new ResponseData();
-        responseData.setRows(s);
+        responseData.setMessage("销售机会添加成功");
+        responseData.setCode(0);
+
         response.setContentType("text/plain;charset=utf-8");
         OutputStream os = response.getOutputStream();
         JsonUtils.writeValue(os, responseData);
     }
 
-    //增加
-    @RequestMapping("/add")
-    public void add(HttpServletRequest request, SalChance salChance){
-        String chcCustName = request.getParameter("chcCustName");
-        String chcTitle = request.getParameter("chcTitle");
-        String chcLinkman = request.getParameter("chcLinkman");
-        if(null==chcCustName){
-        }else{
-            System.out.println(chcCustName);
-            System.out.println(chcTitle);
-            System.out.println(chcLinkman);
-            System.out.println(salChance);
-        }
-        //调用增加的方法
 
+    //根据id修改销售机会
+    @RequestMapping("/edit")
+    public void edit(HttpServletRequest request, SalChance salChance,HttpServletResponse response)
+            throws ServletException, IOException {
+
+        System.out.println("edit...");
+        System.out.println(salChance.getChcId()+" ==getChcId");
+        System.out.println(salChance);
+//        System.out.println("salChance== "+salChance);
+//        System.out.println(salChance.getChcId()+" Id");
+//
+//        salChance.setChcCreateId(1L);
+//        salChance.setChcCreateBy("sj");
+//        salChanceBiz.editSalChanceById(salChance);
+//
+        ResponseData responseData = new ResponseData();
+        responseData.setMessage("销售机会修改成功");
+        responseData.setCode(0);
+
+        response.setContentType("text/plain;charset=utf-8");
+        OutputStream os = response.getOutputStream();
+        JsonUtils.writeValue(os, responseData);
     }
-
 
 }

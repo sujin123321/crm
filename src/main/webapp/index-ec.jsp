@@ -895,7 +895,7 @@ function initialise() {
 	
 	L01 = theMenu.addChild(l2ID, "Folder", "营销管理", "", "营销管理...");
 	L0101 = theMenu.addChild(L01, "Document", "销售机会管理", "input/sale/list", "销售机会管理...");
-	L0102 = theMenu.addChild(L01, "Document", "客户开发计划", "~sale/dev.html", "客户开发计划...");
+	L0102 = theMenu.addChild(L01, "Document", "客户开发计划", "input/sale/dev", "客户开发计划...");
 
 	
 	L02 = theMenu.addChild(l2ID, "Folder", "客户管理", "", "客户管理...");

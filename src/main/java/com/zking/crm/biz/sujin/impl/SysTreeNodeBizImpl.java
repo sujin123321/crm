@@ -19,4 +19,5 @@ public class SysTreeNodeBizImpl implements ISysTreeNodeBiz {
         return sysTreeNodeMapper.listSysTreeNode(record);
     }
 
+
 }

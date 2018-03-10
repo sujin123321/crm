@@ -12,6 +12,6 @@
     <base href="<%=request.getContextPath()+"/"%>">
 </head>
 <body>
-<jsp:forward page="input/hello" />
+<jsp:forward page="input/admin"/>
 </body>
 </html>

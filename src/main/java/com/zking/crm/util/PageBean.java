@@ -9,7 +9,7 @@ public class PageBean implements Serializable {
 	private static final long serialVersionUID = -7544706514503688395L;
 
 	private int curPage = 1;// 当前页
-	private int pageRecord = 1;// 页大小
+	private int pageRecord = 2;// 页大小
 	private int totalRecord;// 总记录数
 
 	private boolean paginate = true;/* 是否分页，默认分页 */
@@ -30,8 +30,7 @@ public class PageBean implements Serializable {
 		this.setCurPage(request.getParameter("curPage"));
 		this.setPageRecord(request.getParameter("pageRecord"));
 		this.setPaginate(request.getParameter("paginate"));
-		this.url = request.getContextPath() + request.getServletPath();
-		this.parameterMap = request.getParameterMap();
+
 
 		// 兼容easyui的页码page、页大小rows
 		String rows = request.getParameter("rows");
@@ -40,6 +39,8 @@ public class PageBean implements Serializable {
 			this.setCurPage(request.getParameter("page"));
 			this.setPageRecord(request.getParameter("rows"));
 		}
+		this.url = request.getContextPath() + request.getServletPath();
+		this.parameterMap = request.getParameterMap();
 	}
 
 	public boolean isPaginate() {

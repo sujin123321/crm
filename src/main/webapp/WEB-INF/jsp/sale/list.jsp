@@ -94,7 +94,7 @@
                 handler : function() {
                     //窗口嵌套：调父窗口的
 //                    parent.doOpenTab('字典新增', 'input/sale/add');
-                    var title ='add';
+                    var title ='新建销售机会';
                     var url = 'input/sale/add';
                     var iconCls = '';
                     var iframe = true;
@@ -112,7 +112,17 @@
                     }
                     //获取选中的行的字典id
                     var chcId = row.chcId;
-                    parent.doOpenTab('修改', '/pages/sys/addDict.jsp?chcId='+chcId);
+                    //parent.doOpenTab('修改', '/pages/sys/addDict.jsp?chcId='+chcId);
+                    var title ='编辑销售机会';
+                    var url = 'input/sale/edit?chcId='+chcId;
+                    var iconCls = '';
+                    var iframe = true;
+
+                    parent.addTab(title,url,iconCls,iframe);
+//                    var url2 = 'sale/loadSalChance?chcId='+chcId;
+//                    alert(chcId);
+//                    parent.loadform(url2);
+
                 }
             }, '-', {
                 iconCls : 'icon-remove',
