@@ -12,75 +12,24 @@
 --%>
 </head>
 <body>
+<%--
 <div class="page_title">销售机会管理</div>
-	<%--<div class="button_bar">
-	<button class="common_button" onclick="help('');">帮助</button>
-	<button class="common_button" onclick="to('input/sale/add');">新建</button>
-	<button class="common_button" onclick="reload();">查询</button> 
-	</div>--%>
-<%--<table class="query_form_table">
-	<tr>
-		<th>客户名称</th>
-		<td><input /></td>
-		<th>概要</th>
-		<td><input /></td>
-		<th>联系人</th>
-		<td>
-			<input name="T1" size="20" />
-		</td>
-	</tr>
-	</table>
-<br />--%>
-<%--<table class="data_list_table">
-	<tr>
-		<th>编号</th>
-		<th>客户名称</th>
-		<th>概要</th>
-		<th>联系人</th>
-		<th>联系人电话</th>
-		<th>创建时间</th>
-		<th>操作</th>
-	</tr>
-	<tr>
-		<td class="list_data_number">1</td>
-		<td class="list_data_text">睿智数码</td>
-		<td class="list_data_ltext">采购笔记本电脑意向</td>
-		<td class="list_data_text">刘先生</td>
-		<td class="list_data_text">13729239239</td>
-		<td class="list_data_text">2007年12月06日</td>
-		<td class="list_data_op">
-			<img onclick="to('input/sale/dispatch');" title="指派" src="images/bt_linkman.gif" class="op_button" />
-			<img onclick="to('input/sale/edit');" title="编辑" src="images/bt_edit.gif" class="op_button" />
-			<img onclick="del('“销售机会：采购笔记本电脑意向”');" title="删除" src="images/bt_del.gif" class="op_button" />
-		</td>
-	</tr>
-	<tr>
-		<th colspan="7" class="pager">
-<div class="pager">
-	共59条记录 每页<input value="10" size="2" />条
-	第<input value="1" size="2"/>页/共5页
-	<a href="#">第一页</a>
-	<a href="#">上一页</a>
-	<a href="#">下一页</a>
-	<a href="#">最后一页</a>
-	转到<input value="1" size="2" />页
-	<button width="20" onclick="reload();">GO</button>
-</div>
-		</th>
-	</tr>
-</table>--%>
+--%>
+<%--<div class="easyui-panel" title="销售机会管理" style="width:800px;max-width:800px;padding:30px 60px;">
+	<div id="tb" style="padding:2px 5px;" class="">
+		客户名称：<input  id="chcCustName" style="width:110px"/>
+		概要：<input  id="chcTitle" style="width:110px"/>
+		联系人：<input  id="chcLinkman" style="width:110px"/>
+		<a id="listBtn" href="#"  class="easyui-linkbutton" iconCls="icon-search">查询</a>
+	</div>
+</div>--%>
+<br>
+<table id="dg" title="销售机会管理">
 
-<div id="tb" style="padding:2px 5px;">
-	客户名称：<input  id="chcCustName" style="width:110px"/>
-	概要：<input  id="chcTitle" style="width:110px"/>
-	联系人：<input  id="chcLinkman" style="width:110px"/>
-	<a id="listBtn" href="#"  class="easyui-linkbutton" iconCls="icon-search">查询</a>
-</div>
-<table id="dg" ></table>
+</table>
 
 <%--<m:page pageBean="${pageBean}"/>--%>
 <script type="text/javascript">
-
     $(function() {
         $('#dg').datagrid( {
             pagination : true,
@@ -88,7 +37,25 @@
             pageSize : 2,
             idFiled : 'chcId',
             singleSelect : true,
+            //fitColumns:true,
             toolbar : [ {
+                	text: '客户名称：<input  class="easyui-textbox" id="chcCustName" style="width:110px"/>'
+				}, {
+					text: '概要：<input class="easyui-textbox" id="chcTitle" style="width:110px"/>'
+				}, {
+                	text: '联系人：<input  class="easyui-textbox" id="chcLinkman" style="width:110px"/>'
+            	},{
+					id: 'searchBtn',
+                        text: '',
+						iconCls: 'icon-search',
+						handler: function(){
+							$('#dg').datagrid('load',{
+                                chcCustName : $("#chcCustName").val(),
+                                chcTitle : $("#chcTitle").val(),
+                                chcLinkman : $("#chcLinkman").val()
+							});
+					}
+				},{
                 iconCls : 'icon-add',
                 text : '新增',
                 handler : function() {
@@ -124,7 +91,31 @@
 //                    parent.loadform(url2);
 
                 }
-            }, '-', {
+            },  '-', {
+                iconCls : 'icon-print',
+                text : '指派',
+                handler : function() {
+                    //获得被选中的行
+                    var row = $('#dg').datagrid("getSelected");
+                    if (!row) {
+                        $.messager.alert('警告', "请选择要指派的行");
+                        return;
+                    }
+                    //获取选中的行的字典id
+                    var chcId = row.chcId;
+                    //parent.doOpenTab('修改', '/pages/sys/addDict.jsp?chcId='+chcId);
+                    var title ='指派销售机会';
+                    var url = 'input/sale/dispatch?chcId='+chcId;
+                    var iconCls = '';
+                    var iframe = true;
+
+                    parent.addTab(title,url,iconCls,iframe);
+//                    var url2 = 'sale/loadSalChance?chcId='+chcId;
+//                    alert(chcId);
+//                    parent.loadform(url2);
+
+                }
+            },'-', {
                 iconCls : 'icon-remove',
                 text : '删除',
                 handler : function() {
@@ -165,32 +156,32 @@
             columns : [ [ {
                 field : 'chcId',
                 title : '编号',
-                width : '40%'
+                width : '150'
             }, {
                 field : 'chcCustName',
                 title : '客户名称',
-                width : '40%'
+                width : '150'
             }, {
                 field : 'chcTitle',
                 title : '概要',
-                width : '40%'
+                width : '200'
             }, {
                 field : 'chcLinkman',
                 title : '联系人',
-                width : '40%'
+                width : '150'
             }, {
                 field : 'chcTel',
                 title : '联系人电话',
-                width : '40%'
+                width : '150'
             }, {
                 field : 'chcCreateDate',
                 title : '创建时间',
-                width : '80%'
+                width : '400'
             } ] ]
         });
         $("#listBtn").click(function() {
             //获取查询文本框的值
-			//alert(6);
+            //alert(6);
             var formData = {
                 chcCustName : $("#chcCustName").val(),
                 chcTitle : $("#chcTitle").val(),
@@ -204,9 +195,9 @@
             //终止默认行为
             return false;
         });
+
+
     });
-
-
 
 </script>
 </body>
