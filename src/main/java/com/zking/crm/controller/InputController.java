@@ -12,6 +12,12 @@ public class InputController {
         super();
     }
 
+    @RequestMapping("/{page}")
+    public String toPage(@PathVariable String page) {
+        System.out.println("toPage");
+        return page;
+    }
+
     @RequestMapping("/{dir}/{page}")
     public String doDirOfPage(@PathVariable String dir,
                               @PathVariable String page) {
@@ -20,11 +26,12 @@ public class InputController {
         return path;
     }
 
-    @RequestMapping("/{page}")
-    public String toPage(@PathVariable String page) {
-        System.out.println("toPage");
-        return page;
+    @RequestMapping("/{dir}/{dir2}/{page}")
+    public String doDirOfPage(@PathVariable String dir, @PathVariable String dir2,
+                              @PathVariable String page) {
+        System.out.println("doDirOfPage");
+        String path = dir + "/" + dir2 + "/" + page;
+        return path;
     }
-
 
 }
