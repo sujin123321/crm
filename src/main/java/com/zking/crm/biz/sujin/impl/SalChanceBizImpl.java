@@ -37,7 +37,19 @@ public class SalChanceBizImpl implements ISalChanceBiz {
     }
 
     @Override
+    public List<SalChance> listSalChance2(SalChance record, PageBean pageBean) {
+        return salChanceMapper.listSalChance2(record);
+    }
+
+    @Override
     public void addSalChance(SalChance record) {
         salChanceMapper.insertSelective(record);
     }
+
+    @Override
+    public SalChance loadSalChancePlan(SalChance record) {
+        return salChanceMapper.loadSalChancePlan(record);
+    }
+
+
 }
