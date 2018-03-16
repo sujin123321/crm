@@ -138,10 +138,11 @@
                                 success : function(data) {
                                     if (0 == data.code) {
                                         $.messager.alert('提示', data.message);
+                                        $('#dg').datagrid('reload');
                                         //删除成功之后 返回指定行的索引号  便于删除 行  getRowIndex
-                                        var ind = $('#dg').datagrid("getRowIndex");
-                                        //然后根据行id  删除行
-                                        $('#dg').datagrid("deleteRow", ind);
+//                                        var ind = $('#dg').datagrid("getRowIndex");
+//                                        //然后根据行id  删除行
+//                                        $('#dg').datagrid("deleteRow", ind);
                                     } else {
                                         $message.alert('警告', '删除失败，请与管理员联系');
                                     }
@@ -149,7 +150,6 @@
                             });
                         }
                     });
-
                 }
             } ],
             url : 'sale/listSalChance',

@@ -53,14 +53,14 @@
                         });
                     }
                 },{
-                	text:'<img onclick="jh()" title="制定计划" src="images/bt_plan.gif" class="op_button" name="zp" width="20px;"/>&nbsp;&nbsp;'
+                	text:'<img onclick="jh()" title="制定计划" src="images/bt_plan.gif" class="op_button" name="zp" />&nbsp;&nbsp;'
                 }
                 ,{
-                    text: '<img onclick="zx()" title="执行计划" src="images/bt_feedback.gif" class="op_button" name="zp" width="20px;"/>&nbsp;&nbsp;'
+                    text: '<img onclick="zx()" title="执行计划" src="images/bt_feedback.gif" class="op_button" name="zp" />&nbsp;&nbsp;'
                 },{
-                    text:'<img onclick="kf()" title="开发成功" src="images/bt_yes.gif" class="op_button" name="zp" width="20px;"/>&nbsp;&nbsp;'
+                    text:'<img onclick="kf()" title="开发成功" src="images/bt_yes.gif" class="op_button" name="zp"/>&nbsp;&nbsp;'
                 },{
-                    text:'<img onclick="look()" title="查看" src="images/bt_detail.gif" class="op_button" name="zp" width="20px;"/>&nbsp;&nbsp;'
+                    text:'<img onclick="look()" title="查看" src="images/bt_detail.gif" class="op_button" name="zp" />&nbsp;&nbsp;'
                 }
             ],
             columns : [ [ {

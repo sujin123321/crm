@@ -11,7 +11,7 @@
 	<%@include file="/common/easyui_style.jsp"%>
 </head>
 <body>
-<div class="easyui-panel" title="客户开发计划&nbsp; &gt; 执行计划" style="width:1000px;height: 500px;">
+<div class="easyui-panel" title="客户开发计划&nbsp; &gt; 查看" style="width:1000px;height: 500px;">
 	<table class="query_form_table">
 		<tr>
 			<th>编号</th>
@@ -29,10 +29,14 @@
 			<th>概要</th>
 				<td>${s.chcTitle}</td>
 			<th>状态</th>
-			<td style="color:red;">
-				开发失败
-			</td>
+			<c:if test="${s.chcStatus==3}">
+				<td>开发成功</td>
+			</c:if>
+			<c:if test="${s.chcStatus==4}">
+				<td style="color:red;">开发失败</td>
+			</c:if>
 		</tr>
+
 		<tr>
 			<th>联系人</th>
 			<td>${s.chcLinkman}</td>

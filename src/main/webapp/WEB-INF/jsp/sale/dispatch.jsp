@@ -43,7 +43,7 @@
 		</div>
 		<div style="text-align:center;padding:5px 0">
 			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">指派</a>
-			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">Clear</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">清空</a>
 		</div>
 	</form>
 
@@ -79,7 +79,7 @@
     //提交
     function submitForm(){
         var options=$("#chcDueTo option:selected");  //获取选中的项
-        alert(options.val());   //拿到选中项的值
+        //alert(options.val());   //拿到选中项的值
         $.ajax({
             url: "sale/editZp",
             dataType: "json",

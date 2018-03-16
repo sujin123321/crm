@@ -82,13 +82,17 @@
 			</tr>
 		</c:forEach>
 	</table>
-
+	<br>
+	<div style="text-align:center;padding:5px 0">
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="success(${s.chcId})" style="width:80px">开发成功</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="stop(${s.chcId})" style="width:80px">终止开发</a>
+	</div>
 </div>
 
 <script type="text/javascript">
     //保存
     function save(plaId) {
-        alert(plaId);
+        //alert(plaId);
         //获得指定文本框
         var plaResult = document.getElementById("p"+plaId).value;
         $.ajax({
@@ -103,6 +107,8 @@
             success: function (result) {
                 //更新父类显示所有的选项卡
 //                    parent.refresh();
+//                    parent.removePanel();
+//				parent.refreshByTitile('执行计划');
                 if  (result.code == 0) {
                     alert(result.message);
                     //修改（保存）
@@ -114,6 +120,48 @@
         });
     }
 
+    //开发成功
+	function success(chcId) {
+        $.messager.confirm('确认', '确认要开发吗？', function(r) {
+            if (r) {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'sale/edit?chcId=' + chcId + '&chcStatus=' + 3,
+                    success: function (data) {
+                        if (0 == data.code) {
+                            alert("开发成功");
+                            //$('#dg').datagrid('reload');
+                            parent.refreshByTitile('客户开发管理');
+                            parent.removePanel();
+                        } else {
+                            $message.alert('警告', '服务器繁忙，请与管理员联系');
+                        }
+                    }
+                })
+            }
+  	  })
+	}
+    //终止开发
+    function stop(chcId) {
+        $.messager.confirm('确认', '确认要终止开发吗？', function(r) {
+            if (r) {
+                $.ajax({
+                    dataType: 'json',
+                    url: 'sale/edit?chcId=' + chcId + '&chcStatus=' + 4,
+                    success: function (data) {
+                        if (0 == data.code) {
+                            //alert("开发成功");
+                            //$('#dg').datagrid('reload');
+                            parent.refreshByTitile('客户开发管理');
+                            parent.removePanel();
+                        } else {
+                            $message.alert('警告', '服务器繁忙，请与管理员联系');
+                        }
+                    }
+                })
+            }
+        })
+    }
 </script>
 </body>
 </html>

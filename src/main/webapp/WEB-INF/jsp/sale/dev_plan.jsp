@@ -122,6 +122,7 @@
                 },
                 success: function(data){
                     $.messager.progress('close');	// 如果提交成功则隐藏进度条
+                    parent.refreshByTitile('制定计划');
 //					if(0==data.code){
 //					    //alert(data.message);
 //                        parent.refreshByTitile('制定计划');
