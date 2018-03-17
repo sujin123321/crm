@@ -115,6 +115,7 @@ public class ServiceController {
     public ResponseData listServiceFile(CstService cstService, HttpServletRequest request){
         pageBean = new PageBean();
         pageBean.setRequest(request);
+        cstService.setSvrStatus("已归档");
 
         List<CstService> cstServices = cstServiceBiz.listCstService(cstService, pageBean);
         //转换成easyui所支持的格式

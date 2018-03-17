@@ -256,7 +256,7 @@ public class SaleController {
             throws ServletException, IOException {
         //参数
         String chcId = request.getParameter("chcId");
-        System.out.println(chcId+"chcId");
+        //System.out.println(chcId+"chcId");
         //初始化
         SalChance salChance = new SalChance();
         //赋值
@@ -293,7 +293,7 @@ public class SaleController {
         salPlanBiz.editSalPlan(salPlan);
         //转换easyui支持的格式
         ResponseData responseData = new ResponseData();
-        responseData.setMessage("修改成功");
+        responseData.setMessage("保存成功");
         responseData.setCode(0);
 
         return  responseData;
@@ -318,6 +318,7 @@ public class SaleController {
 
         salChance.setChcId(salPlan.getPlaChcId());
         SalChance s = salChanceBiz.loadSalChancePlan(salChance);
+        //System.out.println("sssssssssss"+s+"ssssssssssssss");
 //        //转换easyui支持的格式
 //        ResponseData responseData = new ResponseData();
 //        responseData.setMessage("新建成功");
