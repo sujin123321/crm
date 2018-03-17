@@ -1,17 +1,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
-<html>
+<!DOCTYPE html>
+<html lang='en'>
 <head>
 	<%@include file="/common/head.jsp" %>
-	<title>jb-aptech毕业设计项目</title>
+	<meta charset='UTF-8'>
+	<title>ichartjs designer</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<script src="script/common.js"></script>
+	<script src="js/contr.js"></script>
+<%--
+	<script src='http://www.ichartjs.com/ichart.latest.min.js'></script>
+--%>
 </head>
-<body>
+<%--
 <div class="page_title">客户贡献分析</div>
+--%>
 <div class="button_bar">
 	<button class="common_button" onclick="help('');">帮助</button>
-	<button class="common_button" onclick="reload();">查询</button> 
-	</div>
+	<button class="common_button" onclick="reload();">查询</button>
+</div>
 <table class="query_form_table">
 	<tr>
 		<th>客户名称</th>
@@ -29,65 +36,150 @@
 			</select>
 		</td>
 	</tr>
-	</table>
-<br />
-<table class="data_list_table">
-	<tr>
-		<th>编号</th>
-		<th>客户名称</th>
-		<th>订单金额（元）</th>
-	</tr>
-	<tr>
-		<td class="list_data_number">1</td>
-		<td class="list_data_ltext">聪海信息科技有限公司</td>
-		<td class="list_data_number">8789980</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">2</td>
-		<td class="list_data_ltext">北京明科科技有限公司</td>
-		<td class="list_data_number">898700</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">3</td>
-		<td class="list_data_ltext">太阳药业</td>
-		<td class="list_data_number">67760</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">4</td>
-		<td class="list_data_ltext">云南天河烟草公司</td>
-		<td class="list_data_number">35550</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">5</td>
-		<td class="list_data_ltext">北京天桥信息技术有限公司</td>
-		<td class="list_data_number">13900</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">6</td>
-		<td class="list_data_ltext">北京白羽有限责任公司</td>
-		<td class="list_data_number">560900</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">7</td>
-		<td class="list_data_ltext" height="15">北京神光培训</td>
-		<td class="list_data_number">768900</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">8</td>
-		<td class="list_data_ltext" height="35">潍坊青鸟华光</td>
-		<td class="list_data_number">330000</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">9</td>
-		<td class="list_data_ltext">青鸟无限数码</td>
-		<td class="list_data_number">45600</td>
-	</tr>
-	<tr>
-		<td class="list_data_number">10</td>
-		<td class="list_data_ltext">北京大学</td>
-		<td class="list_data_number">670080</td>
-	</tr>
-	
 </table>
+<br>
+<div id='ichart-render'></div>
+<script type='text/javascript'>
+    $(function(){
+        var chart = iChart.create({
+            render:"ichart-render",
+            width:1200,
+            height:500,
+            background_color:"#fefefe",
+            gradient:false,
+            color_factor:0.2,
+            border:{
+                color:"BCBCBC",
+                width:1
+            },
+            align:"center",
+            offsetx:0,
+            offsety:0,
+            sub_option:{
+                border:{
+                    color:"#BCBCBC",
+                    width:1
+                },
+                label:{
+                    fontweight:500,
+                    fontsize:11,
+                    color:"#4572a7",
+                    sign:"square",
+                    sign_size:12,
+                    border:{
+                        color:"#BCBCBC",
+                        width:1
+                    },
+                    background_color:"#fefefe"
+                }
+            },
+            shadow:true,
+            shadow_color:"#666666",
+            shadow_blur:2,
+            showpercent:false,
+            column_width:"70%",
+            bar_height:"70%",
+            radius:"90%",
+            title:{
+                text:"客户贡献分析",
+                color:"#3398DB",
+                fontsize:20,
+                font:"微软雅黑",
+                textAlign:"center",
+                height:30,
+                offsetx:0,
+                offsety:0
+            },
+            subtitle:{
+                text:"数据统计",
+                color:"#3398DB",
+                fontsize:16,
+                font:"微软雅黑",
+                textAlign:"center",
+                height:20,
+                offsetx:0,
+                offsety:0
+            },
+            footnote:{
+                text:"",
+                color:"#111111",
+                fontsize:12,
+                font:"微软雅黑",
+                textAlign:"right",
+                height:20,
+                offsetx:0,
+                offsety:0
+            },
+            legend:{
+                enable:false,
+                background_color:"#fefefe",
+                color:"#333333",
+                fontsize:12,
+                border:{
+                    color:"#BCBCBC",
+                    width:1
+                },
+                column:1,
+                align:"right",
+                valign:"center",
+                offsetx:0,
+                offsety:0
+            },
+            coordinate:{
+                width:"80%",
+                height:"84%",
+                background_color:"#ffffff",
+                axis:{
+                    color:"#a5acb8",
+                    width:[1,"",1,""]
+                },
+                grid_color:"#d9d9d9",
+                label:{
+                    fontweight:500,
+                    color:"#666666",
+                    fontsize:11
+                }
+            },
+            label:{
+                fontweight:500,
+                color:"#666666",
+                fontsize:11
+            },
+            type:"column2d",
+            data:[
+                {
+                    name:"名称A",
+                    value:43000,
+                    color:"#3398DB"
+                },{
+                    name:"名称B",
+                    value:1000000,
+                    color:"#3398DB"
+                },{
+                    name:"名称C",
+                    value:60000,
+                    color:"#3398DB"
+                },{
+                    name:"新增",
+                    value:76543,
+                    color:"#3398DB"
+                },{
+                    name:"新增",
+                    value:1234567,
+                    color:"#3398DB"
+                },{
+                    name:"新增",
+                    value:5433,
+                    color:"#3398DB"
+                },{
+                    name:"新增",
+                    value:111111,
+                    color:"#3398DB"
+                }
+            ]
+        });
+        chart.draw();
+    });
+</script>
 </body>
 </html>

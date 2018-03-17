@@ -7,7 +7,7 @@
     <title>ichartjs designer</title>
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="script/common.js"></script>
-    <script src='http://www.ichartjs.com/ichart.latest.min.js'></script>
+
 </head>
 <div class="page_title">客户贡献分析</div>
 <div class="button_bar">
@@ -176,5 +176,6 @@
         chart.draw();
     });
 </script>
+<script src='http://www.ichartjs.com/ichart.latest.min.js'></script>
 </body>
 </html>

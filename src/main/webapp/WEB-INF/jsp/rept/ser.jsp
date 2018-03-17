@@ -10,7 +10,6 @@
 	<script src='http://www.ichartjs.com/ichart.latest.min.js'></script>
 </head>
 <body>
-<div class="page_title">客户服务分析</div>
 <div class="button_bar">
 	<button class="common_button" onclick="help('');">帮助</button>
 	<button class="common_button" onclick="reload();">查询</button> 
